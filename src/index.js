@@ -4,9 +4,9 @@ import App from './js/components/App';
 import './scss/main.scss';
 
 import { Provider } from 'react-redux';
-import store from './js/redux/store/index';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { rrfProps } from './js/services/firebase';
+import store from './js/redux/store/index';
 
 ReactDOM.render(
 	<React.StrictMode>

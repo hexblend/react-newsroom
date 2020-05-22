@@ -1,27 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useFirebase } from 'react-redux-firebase';
 import Button from '../components/elements/Button';
 
-import { signIn } from '../redux/actions/AuthActions';
-
 const Home = (props) => {
-	const { auth, signIn } = props;
+	const firebase = useFirebase();
+
+	const signInWithGoogle = (e) => {
+		e.preventDefault();
+		firebase.login({
+			provider: 'google',
+			type: 'redirect',
+		});
+	};
+
 	return (
 		<div className="Home">
 			<h1 className="Home__title">Welcome to Solent University News Room</h1>
-			<Link to="/">
-				<Button text="Login with Google" type="primary" />
-			</Link>
+			<Button
+				text="Login with Google"
+				type="primary"
+				onClick={(e) => signInWithGoogle(e)}
+			/>
 		</div>
 	);
 };
 
-const mapStateToProps = (state) => ({
-	auth: state.AuthReducer.auth,
-});
-const mapDispatchToProps = (dispatch) => ({
-	signIn: (user) => dispatch(signIn(user)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

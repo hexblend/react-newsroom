@@ -2,14 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Button(props) {
-	const { type, text } = props;
+	const { type, text, onClick } = props;
 	return (
 		<>
-			<button
-				className={`btn ${
-					type === 'primary' && 'btn-primary'
-				} `}
-			>
+			<button className={`btn ${type === 'primary' && 'btn-primary'} `} onClick={onClick}>
 				{text}
 			</button>
 		</>

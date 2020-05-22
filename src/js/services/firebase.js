@@ -27,8 +27,3 @@ export const rrfProps = {
 	dispatch: store.dispatch,
 	createFirestoreInstance,
 };
-
-const dbRef = firebase.database().ref();
-export const newsRef = dbRef.child('news');
-export const authRef = firebase.auth();
-export const provider = new firebase.auth.GoogleAuthProvider();
