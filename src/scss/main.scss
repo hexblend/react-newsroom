@@ -19,7 +19,8 @@
 @import 'layout/sidebar';
 
 // 5. Components
-@import 'components/button';
+@import 'components/elements/button';
+@import 'components/addNewsBar';
 
 // 6. Page-specific styles
 @import 'pages/home';

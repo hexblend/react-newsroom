@@ -1,0 +1,38 @@
+.AddNewsBar {
+	position: fixed;
+	bottom: -20rem;
+	left: 50%;
+	transform: translateX(-50%);
+	background: $dark-gray;
+	border-top-right-radius: 0.5rem;
+	border-top-left-radius: 0.5rem;
+	width: 50vw;
+	@include flex-between;
+	padding: 1.6rem 2.4rem 1.1rem 2.4rem;
+	@include trans;
+	&.raised {
+		bottom: 0;
+	}
+}
+.AddNewsBar__input {
+	width: calc(100% - 3.2rem);
+	background: $dark-gray;
+	border: 0;
+	outline: none;
+	font-size: $p-desktop;
+	color: $white;
+	resize: none;
+}
+.AddNewsBar__icon {
+	font-size: $p-desktop;
+	color: $text-dark-gray;
+	padding-bottom: 0.2rem;
+	position: absolute;
+	top: 1.6rem;
+	right: 2.4rem;
+	@include text-trans;
+	&:hover {
+		cursor: pointer;
+		color: $text-gray;
+	}
+}

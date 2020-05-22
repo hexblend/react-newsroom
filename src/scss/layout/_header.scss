@@ -9,7 +9,7 @@
 	font-size: $h2-desktop;
 }
 .Header__logout {
-	color: $dark-text-gray;
+	color: $text-dark-gray;
 	font-size: $p-desktop;
 	@include text-trans;
 	&:hover {

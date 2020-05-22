@@ -6,8 +6,8 @@
 $main-font-family: 'Cabin', sans-serif;
 
 /// Code (monospace) font family
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono',
-	'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco',
+	monospace !default;
 
 /// Font Sizes
 $h1-desktop: 4rem;
@@ -27,7 +27,7 @@ $black: #000000;
 
 // Grays
 $text-gray: #c7c7c7;
-$dark-text-gray: #595c61;
+$text-dark-gray: #595c61;
 $main-gray: #41464e;
 $dark-gray: #2a2d33;
 $darkest-gray: #282b31;
