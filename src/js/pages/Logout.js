@@ -5,8 +5,10 @@ import firebase from 'firebase';
 function Logout() {
 	const history = useHistory();
 	useEffect(() => {
-		firebase.logout();
-		history.push('/');
+		firebase.logout().then(() => {
+			history.push('/');
+			window.location.reload();
+		});
 	}, []);
 	return <></>;
 }

@@ -1,3 +1,16 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the header of the site/application.
-// -----------------------------------------------------------------------------
+.Header {
+	@include flex-between;
+	background: $darkest-gray;
+	color: $white;
+	padding: 0 3.2rem;
+}
+.Header__members {
+	font-size: $p-small-desktop;
+}
+.Header__logout {
+	color: $dark-text-gray;
+	font-size: $p-small-desktop;
+	&:hover {
+		color: $white;
+	}
+}

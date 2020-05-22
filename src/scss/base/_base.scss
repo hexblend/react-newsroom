@@ -20,6 +20,10 @@ html {
 *::after {
 	box-sizing: inherit;
 }
+body {
+	background: $main-gray;
+	color: $white;
+}
 
 /**
  * Basic styles for links

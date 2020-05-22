@@ -11,8 +11,8 @@ export default function App() {
 		<Router>
 			<Switch>
 				<Route exact path="/" component={Home} />
-				<PrivateRoute exact path="/news" component={News} />
-				<Route exact path="/logout" component={Logout} />
+				<PrivateRoute path="/news" component={News} />
+				<Route path="/logout" component={Logout} />
 			</Switch>
 		</Router>
 	);

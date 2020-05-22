@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from '../layout/Header';
+import Sidebar from '../layout/Sidebar';
 
 const News = () => {
 	return (
 		<div className="News">
-			<h1>News</h1>
+			<Header />
+			<Sidebar />
 		</div>
 	);
 };

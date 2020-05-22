@@ -30,11 +30,17 @@ const Home = (props) => {
 	return (
 		<div className="Home">
 			<h1 className="Home__title">Welcome to Solent University News Room</h1>
-			<Button
-				text="Login with Google"
-				type="primary"
-				onClick={(e) => signInWithGoogle(e)}
-			/>
+			{!isLoaded(auth) ? (
+				<Button text="Loading..." type="primary" />
+			) : isEmpty(auth) ? (
+				<Button
+					text="Login with Google"
+					type="primary"
+					onClick={(e) => signInWithGoogle(e)}
+				/>
+			) : (
+				<pre>{JSON.stringify(auth, null, 2)}</pre>
+			)}
 		</div>
 	);
 };

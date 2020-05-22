@@ -1,6 +1,9 @@
-import firebase from 'firebase';
-import store from '../redux/store/index';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+
 import { createFirestoreInstance } from 'redux-firestore';
+import store from '../redux/store/index';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_API_KEY,
@@ -18,12 +21,12 @@ const rrfConfig = {
 	useFirestoreForProfile: true,
 };
 
-firebase.initializeApp(firebaseConfig);
-firebase.firestore();
-
 export const rrfProps = {
 	firebase,
 	config: rrfConfig,
 	dispatch: store.dispatch,
 	createFirestoreInstance,
 };
+
+firebase.initializeApp(firebaseConfig);
+firebase.firestore();

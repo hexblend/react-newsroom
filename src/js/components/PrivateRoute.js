@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { isLoaded, isEmpty } from 'react-redux-firebase';
 
 function PrivateRoute(props) {
 	const { auth, component, children, ...rest } = props;
-	const [content, setContent] = React.useState();
+	const [content, setContent] = useState();
 
 	useEffect(() => {
 		if (!isEmpty(auth) && isLoaded(auth)) {
