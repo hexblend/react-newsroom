@@ -1,17 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Button from '../components/elements/Button';
 
 const Home = () => {
 	return (
 		<div className="Home">
-			<div>
-				<h2>Articles</h2>
-			</div>
-			<div>
-				<h2>Add new article</h2>
-			</div>
-			<div>
-				<h2>API Posts</h2>
-			</div>
+			<h1>Welcome to Solent University News Room</h1>
+			<Link to="/">
+				<Button text="Login with Google" type="primary" />
+			</Link>
 		</div>
 	);
 };
