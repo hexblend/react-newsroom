@@ -3,6 +3,10 @@
 	background: $darkest-gray;
 	color: $white;
 	padding: 0 3.2rem;
+	height: 8rem;
+}
+.Header__title {
+	font-size: $h2-desktop;
 }
 .Header__members {
 	font-size: $p-small-desktop;
