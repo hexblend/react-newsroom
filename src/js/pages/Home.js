@@ -5,7 +5,9 @@ import Button from '../components/elements/Button';
 const Home = () => {
 	return (
 		<div className="Home">
-			<h1>Welcome to Solent University News Room</h1>
+			<h1 className="Home__title">
+				Welcome to Solent University News Room
+			</h1>
 			<Link to="/">
 				<Button text="Login with Google" type="primary" />
 			</Link>

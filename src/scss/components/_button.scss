@@ -1,3 +1,27 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the button component.
-// -----------------------------------------------------------------------------
+.btn {
+	font-size: $p-small-desktop;
+	border-radius: 0.5rem;
+	font-weight: 400;
+	border: 0;
+	outline: 0;
+	@include trans;
+	&:hover {
+		cursor: pointer;
+	}
+}
+.btn-primary {
+	padding: 1.6rem 3.2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	background: $main-gray;
+	color: white;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	&:hover {
+		box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+		transform: scale(0.97);
+	}
+	&:active {
+		transform: scale(0.95);
+		box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.4);
+	}
+}

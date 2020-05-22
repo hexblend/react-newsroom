@@ -1,3 +1,12 @@
-// -----------------------------------------------------------------------------
-// This file contains styles that are specific to the home page.
-// -----------------------------------------------------------------------------
+.Home {
+	width: 100vw;
+	height: 100vh;
+	background: url('/img/home-bg.jpg') no-repeat center
+		center / cover;
+	@include flex-center;
+	flex-direction: column;
+}
+.Home__title {
+	color: white;
+	text-transform: uppercase;
+}
