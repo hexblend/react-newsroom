@@ -1,16 +1,30 @@
-import React from 'react';
-import { useFirebase } from 'react-redux-firebase';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useFirebase, isLoaded, isEmpty } from 'react-redux-firebase';
 import Button from '../components/elements/Button';
 
 const Home = (props) => {
+	const { auth } = props;
 	const firebase = useFirebase();
+	const history = useHistory();
+
+	useEffect(() => {
+		if (!isEmpty(auth) && isLoaded(auth)) {
+			history.push('/news');
+		}
+	}, [auth]);
 
 	const signInWithGoogle = (e) => {
 		e.preventDefault();
-		firebase.login({
-			provider: 'google',
-			type: 'redirect',
-		});
+		firebase
+			.login({
+				provider: 'google',
+				type: 'popup',
+			})
+			.then(() => {
+				history.push('/news');
+			});
 	};
 
 	return (
@@ -24,5 +38,7 @@ const Home = (props) => {
 		</div>
 	);
 };
-
-export default Home;
+const mapStateToProps = (state) => ({
+	auth: state.firebase.auth,
+});
+export default connect(mapStateToProps)(Home);
