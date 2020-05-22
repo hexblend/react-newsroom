@@ -23,6 +23,8 @@ html {
 body {
 	background: $main-gray;
 	color: $white;
+	position: relative;
+	white-space: nowrap;
 }
 
 /**

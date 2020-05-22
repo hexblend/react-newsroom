@@ -1,0 +1,43 @@
+.Sidebar {
+	position: fixed;
+	left: 0;
+	top: 8rem;
+	bottom: 0;
+	padding-left: 4rem;
+	min-width: 18rem;
+}
+.User {
+	position: relative;
+	z-index: 10;
+	margin-bottom: 1.6rem;
+	&:first-child {
+		margin-top: 1.6rem;
+	}
+}
+.User__avatar {
+	position: relative;
+	width: 5rem;
+	height: 5rem;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	&:hover {
+		cursor: pointer;
+	}
+	&:hover + .User__fullName {
+		opacity: 1;
+	}
+}
+.User__fullName {
+	background: $dark-gray;
+	position: absolute;
+	right: 0;
+	top: -0.3rem;
+	right: 0;
+	padding: 0.5rem 0.8rem;
+	border-radius: 0.5rem;
+	font-size: $p-small-desktop;
+	opacity: 0;
+	@include trans;
+}

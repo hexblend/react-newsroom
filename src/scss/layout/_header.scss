@@ -8,12 +8,10 @@
 .Header__title {
 	font-size: $h2-desktop;
 }
-.Header__members {
-	font-size: $p-small-desktop;
-}
 .Header__logout {
 	color: $dark-text-gray;
-	font-size: $p-small-desktop;
+	font-size: $p-desktop;
+	@include text-trans;
 	&:hover {
 		color: $white;
 	}
