@@ -26,9 +26,7 @@ function SingleNews(props) {
 			.delete()
 			.then(() => {
 				dispatch(setAlert('News deleted.'));
-				setTimeout(() => {
-					dispatch(setAlert(''));
-				}, 1500);
+				setTimeout(() => dispatch(setAlert('')), 1500);
 			});
 	};
 

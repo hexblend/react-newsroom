@@ -13,7 +13,7 @@ function PrivateRoute(props) {
 		} else {
 			setContent(<Redirect to={{ pathname: '/' }} />);
 		}
-	}, [auth]);
+	}, [auth, children, component]);
 
 	return <Route {...rest} render={() => content} />;
 }

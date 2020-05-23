@@ -13,7 +13,7 @@ const Home = (props) => {
 		if (!isEmpty(auth) && isLoaded(auth)) {
 			history.push('/news');
 		}
-	}, [auth]);
+	}, [auth, history]);
 
 	const signInWithGoogle = (e) => {
 		e.preventDefault();
