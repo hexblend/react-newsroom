@@ -32,7 +32,7 @@ function SingleNews(props) {
 				setTimeout(() => dispatch(setAlert('')), 1500);
 			});
 		if (pinnedNews[0]) {
-			firestore.collection('pinned').doc('pinnedPost').delete();
+			firestore.collection('pinned').doc(pinnedNews[0].id).delete();
 		}
 	};
 
