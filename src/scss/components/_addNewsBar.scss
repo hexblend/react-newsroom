@@ -36,3 +36,24 @@
 		color: $text-gray;
 	}
 }
+.AddNewsBar__error {
+	position: absolute;
+	top: -4rem;
+	left: 0;
+	font-size: $p-small-desktop;
+	color: #fc5656;
+	animation: 0.15s ease-in-out slideIn forwards;
+}
+@keyframes slideIn {
+	0% {
+		opacity: 0;
+		left: -2.4rem;
+	}
+	70% {
+		opacity: 1;
+		left: 1.6rem;
+	}
+	100% {
+		left: 0;
+	}
+}
