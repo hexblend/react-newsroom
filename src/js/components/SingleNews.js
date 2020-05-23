@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 import { useFirestore } from 'react-redux-firebase';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
+
 import { setAlert } from '../redux/actions/MainActions';
 import { useDispatch } from 'react-redux';
 
@@ -34,7 +36,10 @@ function SingleNews(props) {
 		<div className="SingleNews">
 			<p className="SingleNews__text">{news.news}</p>
 			<div className="SingleNews__footer">
-				<p className="SingleNews__footer--pin"></p>
+				<p className="SingleNews__footer--pin">
+					<FontAwesomeIcon icon={emptyStar} />
+					<span>Pin post</span>
+				</p>
 				<p className="SingleNews__footer--author">{author.displayName}</p>
 			</div>
 			{authUser.uid === author.id && (
