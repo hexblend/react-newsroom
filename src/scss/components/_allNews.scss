@@ -1,0 +1,29 @@
+.AllNews {
+	max-width: 40rem;
+	margin: 0 auto;
+}
+
+.AllNews__noNewsMessage {
+	margin-top: 3.2rem;
+	background: $dark-gray;
+	opacity: 0;
+	padding: 0.8rem 4rem;
+	border-radius: 0.5rem;
+	transition: 0.3s ease-in-out;
+	animation: 0.5s ease-in-out fadeIn forwards;
+	animation-delay: 0.1s;
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		background: $white;
+	}
+	30% {
+		opacity: 1;
+		background: $red;
+	}
+	100% {
+		background: $dark-gray;
+		opacity: 1;
+	}
+}

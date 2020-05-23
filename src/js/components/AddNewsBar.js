@@ -5,6 +5,7 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
 import { raiseInput, setAlert } from '../redux/actions/MainActions';
 import { useFirestore } from 'react-redux-firebase';
+import firebase from 'firebase/app';
 
 function AddNewsBar(props) {
 	const { auth, raisedInput, setRaisedInput, setAlert } = props;
@@ -25,7 +26,9 @@ function AddNewsBar(props) {
 			const newNews = {
 				news,
 				author: auth.uid,
+				date: firebase.firestore.FieldValue.serverTimestamp(),
 			};
+			// Could be transform into an action
 			firestore
 				.collection('news')
 				.add(newNews)
