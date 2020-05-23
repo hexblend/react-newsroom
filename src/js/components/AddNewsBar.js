@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 import { connect } from 'react-redux';
-import { raiseInput } from '../redux/actions/MainActions';
+import { raiseInput, setAlert } from '../redux/actions/MainActions';
 import { useFirestore } from 'react-redux-firebase';
 
 function AddNewsBar(props) {
-	const { auth, raisedInput, setRaisedInput } = props;
+	const { auth, raisedInput, setRaisedInput, setAlert } = props;
 
 	const [news, setNews] = useState('');
 	const [error, setError] = useState('');
@@ -21,11 +21,18 @@ function AddNewsBar(props) {
 			setError('');
 			setNews('');
 			setRaisedInput(false);
+
 			const newNews = {
 				news,
 				author: auth.uid,
 			};
-			firestore.collection('news').add(newNews);
+			firestore
+				.collection('news')
+				.add(newNews)
+				.then(() => {
+					setAlert('News added.');
+					setTimeout(() => setAlert(''), 3000);
+				});
 		}
 	};
 
@@ -57,6 +64,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	setRaisedInput: (bool) => dispatch(raiseInput(bool)),
+	setAlert: (string) => dispatch(setAlert(string)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddNewsBar);

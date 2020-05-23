@@ -43,6 +43,7 @@ h6 {
 	font-size: $h6-desktop;
 }
 p {
+	margin: 0;
 	font-size: $p-desktop;
 	&.small {
 		font-size: $p-small-desktop;
