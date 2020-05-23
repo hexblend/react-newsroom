@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React from 'react';
 import { connect } from 'react-redux';
-import { isLoaded, isEmpty } from 'react-redux-firebase';
+import { Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function PrivateRoute(props) {
-	const { auth, component, children, ...rest } = props;
-	const [content, setContent] = useState();
-
-	useEffect(() => {
-		if (!isEmpty(auth) && isLoaded(auth)) {
-			setContent(component, children);
-		} else {
-			setContent(<Redirect to={{ pathname: '/' }} />);
+const PrivateRoute = ({ isAuthenticated, component: Component, ...rest }) => (
+	<Route
+		{...rest}
+		render={(props) =>
+			isAuthenticated ? <Component {...props} {...rest} /> : <Redirect to="/" />
 		}
-	}, [auth, children, component]);
-
-	return <Route {...rest} render={() => content} />;
-}
-
+	/>
+);
 const mapStateToProps = (state) => ({
-	auth: state.firebase.auth,
+	isAuthenticated: state.firebase.auth.uid,
 });
+
+PrivateRoute.propTypes = {
+	component: PropTypes.func.isRequired,
+	isAuthenticated: PropTypes.string,
+};
 
 export default connect(mapStateToProps)(PrivateRoute);

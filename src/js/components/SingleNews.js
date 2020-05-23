@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useFirestore, useFirestoreConnect } from 'react-redux-firebase';
 import { useSelector } from 'react-redux';
-import { useFirestore } from 'react-redux-firebase';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
@@ -11,13 +11,14 @@ import { setAlert } from '../redux/actions/MainActions';
 import { useDispatch } from 'react-redux';
 
 function SingleNews(props) {
-	const { news } = props;
-
+	const { news, pinned } = props;
 	const dispatch = useDispatch();
+	useFirestoreConnect([{ collection: 'pinned' }]);
 
 	const users = useSelector((state) => state.firestore.ordered.users);
 	const author = users && users.filter((user) => user.id === news.author)[0];
 	const authUser = useSelector((state) => state.firebase.auth);
+	const pinnedNews = useSelector((state) => state.firestore.ordered.pinned);
 
 	const firestore = useFirestore();
 
@@ -31,15 +32,37 @@ function SingleNews(props) {
 				setTimeout(() => dispatch(setAlert('')), 1500);
 			});
 	};
+	const handlePinPost = () => {
+		firestore.collection('news').doc(news.id).delete();
+		if (pinnedNews) {
+			firestore.collection('news').doc(pinnedNews[0].id).set(pinnedNews[0]);
+			firestore.collection('pinned').doc('pinnedPost').set(news);
+		}
+	};
+	const handleUnpinPost = () => {
+		firestore.collection('news').doc(news.id).set(news);
+		firestore.collection('pinned').doc('pinnedPost').delete();
+	};
 
 	return (
-		<div className="SingleNews">
+		<div className={`SingleNews ${pinned && 'SinglePinnedNews'}`}>
 			<p className="SingleNews__text">{news.news}</p>
 			<div className="SingleNews__footer">
-				<p className="SingleNews__footer--pin">
-					<FontAwesomeIcon icon={emptyStar} />
-					<span>Pin post</span>
-				</p>
+				{pinned ? (
+					<p
+						className="SingleNews__footer--pin"
+						onClick={handleUnpinPost}
+						style={{ opacity: 1 }}
+					>
+						<FontAwesomeIcon icon={solidStar} />
+						<span>Unpin news</span>
+					</p>
+				) : (
+					<p className="SingleNews__footer--pin" onClick={handlePinPost}>
+						<FontAwesomeIcon icon={emptyStar} />
+						<span>Pin news</span>
+					</p>
+				)}
 				<p className="SingleNews__footer--author">{author.displayName}</p>
 			</div>
 			{authUser.uid === author.id && (
@@ -57,6 +80,7 @@ function SingleNews(props) {
 
 SingleNews.propTypes = {
 	news: PropTypes.object.isRequired,
+	pinned: PropTypes.bool,
 };
 
 export default SingleNews;
