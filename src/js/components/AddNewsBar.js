@@ -34,7 +34,7 @@ function AddNewsBar(props) {
 				.add(newNews)
 				.then(() => {
 					setAlert('News added.');
-					setTimeout(() => setAlert(''), 3000);
+					setTimeout(() => setAlert(''), 1500);
 				});
 		}
 	};

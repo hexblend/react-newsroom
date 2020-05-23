@@ -9,8 +9,11 @@ function SingleNews(props) {
 
 	return (
 		<div className="SingleNews">
-			<p>{news.news}</p>
-			<p>{author.displayName}</p>
+			<p className="SingleNews__text">{news.news}</p>
+			<div className="SingleNews__footer">
+				<p className="SingleNews__footer--pin"></p>
+				<p className="SingleNews__footer--author">{author.displayName}</p>
+			</div>
 		</div>
 	);
 }

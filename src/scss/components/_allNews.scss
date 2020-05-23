@@ -1,6 +1,9 @@
 .AllNews {
-	max-width: 40rem;
+	max-width: 40vw;
+	min-width: 40vw;
 	margin: 0 auto;
+	margin-bottom: 8rem;
+	margin-top: 24rem;
 }
 
 .AllNews__noNewsMessage {
