@@ -32,10 +32,9 @@
 .User__fullName {
 	background: $dark-gray;
 	position: absolute;
-	right: 0;
 	top: 50%;
 	transform: translateY(-50%);
-	right: 0;
+	left: 6.5rem;
 	padding: 0.5rem 0.8rem;
 	border-radius: 0.5rem;
 	font-size: $p-small-desktop;
