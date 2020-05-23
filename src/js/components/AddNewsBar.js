@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
@@ -39,9 +40,28 @@ function AddNewsBar(props) {
 		}
 	};
 
+	// Textarea Controls
+	const textareaRef = React.createRef();
+	const onKeyPress = (e) => {
+		if (e.keyCode == 13 && e.shiftKey == false) {
+			e.preventDefault();
+			textareaRef.current.blur();
+			handleSubmit();
+		}
+		if (e.keyCode == 27) {
+			setRaisedInput(false);
+		}
+	};
+
 	return (
 		<div className={`AddNewsBar ${raisedInput && 'raised'}`}>
 			{error !== '' && <p className="AddNewsBar__error">{error}</p>}
+			{raisedInput && (
+				<div className="AddNewsBar__controls">
+					<p>Enter - Add news</p>
+					<p>Esc - Close</p>
+				</div>
+			)}
 			<textarea
 				type="text"
 				className="AddNewsBar__input"
@@ -50,6 +70,8 @@ function AddNewsBar(props) {
 				rows="12"
 				onClick={() => setRaisedInput(true)}
 				onChange={(e) => setNews(e.target.value)}
+				onKeyDown={(e) => onKeyPress(e)}
+				ref={textareaRef}
 			/>
 			<FontAwesomeIcon
 				icon={faPaperPlane}

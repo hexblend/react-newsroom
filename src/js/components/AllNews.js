@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 
 function AllNews() {
 	useFirestoreConnect([{ collection: 'news' }]);
-	const allNews = useSelector((state) => state.firestore.ordered.news);
-	console.log(allNews);
+	const recAllNews = useSelector((state) => state.firestore.ordered.news);
+	const allNews = recAllNews && recAllNews.slice().sort((a, b) => b.date - a.date);
 	return (
 		<div className="AllNews">
 			{allNews && allNews.length !== 0 ? (
