@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { useFirestore } from 'react-redux-firebase';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +12,12 @@ function SingleNews(props) {
 	const author = users && users.filter((user) => user.id === news.author)[0];
 	const authUser = useSelector((state) => state.firebase.auth);
 
+	const firestore = useFirestore();
+
+	const handleDeleteNews = () => {
+		firestore.collection('news').doc(news.id).delete();
+	};
+
 	return (
 		<div className="SingleNews">
 			<p className="SingleNews__text">{news.news}</p>
@@ -20,7 +27,11 @@ function SingleNews(props) {
 			</div>
 			{authUser.uid === author.id && (
 				<div className="SingleNews__deleteWrapper">
-					<FontAwesomeIcon icon={faTimes} className="SingleNews__delete" />
+					<FontAwesomeIcon
+						icon={faTimes}
+						className="SingleNews__delete"
+						onClick={handleDeleteNews}
+					/>
 				</div>
 			)}
 		</div>

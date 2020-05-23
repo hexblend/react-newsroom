@@ -43,8 +43,8 @@
 .SingleNews__deleteWrapper {
 	position: absolute;
 	top: 0;
-	right: -6rem;
-	width: 4rem;
+	right: -7.5rem;
+	width: 5rem;
 	transform: translate(-50%);
 	height: 100%;
 	@include flex-center;
@@ -54,7 +54,7 @@
 }
 .SingleNews__delete {
 	color: $red;
-	font-size: $p-desktop;
+	font-size: $h5-desktop;
 	display: none;
 	animation: 0.2s ease-in-out simpleFadeIn forwards;
 	&:hover {
