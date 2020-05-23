@@ -40,10 +40,15 @@ function SingleNews(props) {
 		firestore.collection('news').doc(news.id).delete();
 		firestore
 			.collection('pinned')
-			.doc('pinnedPost')
+			.doc(news.id)
 			.set({ author: news.author, date: news.date, news: news.news });
 		if (pinnedNews[0]) {
-			firestore.collection('news').doc(pinnedNews[0].id).set(pinnedNews[0]);
+			firestore.collection('news').doc(pinnedNews[0].id).set({
+				author: pinnedNews[0].author,
+				date: pinnedNews[0].date,
+				news: pinnedNews[0].news,
+			});
+			firestore.collection('pinned').doc(pinnedNews[0].id).delete();
 		}
 	};
 
@@ -52,7 +57,7 @@ function SingleNews(props) {
 			.collection('news')
 			.doc(news.id)
 			.set({ author: news.author, date: news.date, news: news.news });
-		firestore.collection('pinned').doc('pinnedPost').delete();
+		firestore.collection('pinned').doc(news.id).delete();
 	};
 
 	return (
