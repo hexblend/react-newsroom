@@ -33,7 +33,8 @@
 	background: $dark-gray;
 	position: absolute;
 	right: 0;
-	top: -0.3rem;
+	top: 50%;
+	transform: translateY(-50%);
 	right: 0;
 	padding: 0.5rem 0.8rem;
 	border-radius: 0.5rem;
