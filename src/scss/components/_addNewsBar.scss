@@ -15,6 +15,12 @@
 		bottom: 0;
 		box-shadow: 0px -1px 20px rgba(0, 0, 0, 0.4);
 	}
+	@include media('<desktop') {
+		width: 70vw;
+	}
+	@include media('<phone') {
+		width: 90vw;
+	}
 }
 .AddNewsBar__input {
 	width: calc(100% - 3.2rem);

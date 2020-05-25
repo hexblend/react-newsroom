@@ -5,6 +5,9 @@
 	bottom: 0;
 	padding-left: 4rem;
 	min-width: 18rem;
+	@include media('<phone') {
+		left: -18rem;
+	}
 }
 .User {
 	position: relative;
@@ -38,6 +41,7 @@
 	padding: 0.5rem 0.8rem;
 	border-radius: 0.5rem;
 	font-size: $p-small-desktop;
+	white-space: nowrap;
 	opacity: 0;
 	@include trans;
 }

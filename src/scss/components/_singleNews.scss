@@ -1,3 +1,11 @@
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
 .SingleNews {
 	position: relative;
 	margin-bottom: 1.6rem;
@@ -5,9 +13,6 @@
 	padding: 1.6rem;
 	border-radius: 0.5rem;
 	animation: 0.6s ease-in-out fadeIn forwards;
-	&:first-child {
-		margin-top: 3.2rem;
-	}
 	&:last-child {
 		margin-bottom: 0;
 	}
@@ -15,27 +20,6 @@
 		display: block;
 	}
 	&:hover .SingleNews__footer--pin {
-		opacity: 1;
-	}
-}
-.SingleNews__text {
-	color: $white;
-	animation: 0.6s ease-in-out fadeIn forwards;
-}
-@keyframes fadeIn {
-	0% {
-		opacity: 0;
-		background: lighten($dark-gray, 10%);
-		color: lighten($dark-gray, 10%);
-	}
-	30% {
-		opacity: 1;
-		background: lighten($dark-gray, 10%);
-		color: lighten($dark-gray, 10%);
-	}
-	100% {
-		background: $dark-gray;
-		color: $text-gray;
 		opacity: 1;
 	}
 }
@@ -78,18 +62,15 @@
 		cursor: pointer;
 	}
 }
-@keyframes simpleFadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
 .SinglePinnedNews {
-	max-width: 35vw;
-	min-width: 35vw;
+	width: 35vw;
 	margin: 0 auto;
 	position: sticky;
 	top: 9.6rem;
+	@include media('<desktop') {
+		width: 50vw;
+	}
+	@include media('<phone') {
+		width: 70vw;
+	}
 }

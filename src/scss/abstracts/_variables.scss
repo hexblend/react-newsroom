@@ -17,6 +17,20 @@ $h4-desktop: 2.4rem;
 $h5-desktop: 2rem;
 $h6-desktop: 1.6rem;
 
+$h1-tablet: 4rem;
+$h2-tablet: 2.8rem;
+$h3-tablet: 2.4rem;
+$h4-tablet: 2rem;
+$h5-tablet: 1.6rem;
+$h6-tablet: 1.4rem;
+
+$h1-mobile: 3.6rem;
+$h2-mobile: 2.4rem;
+$h3-mobile: 2rem;
+$h4-mobile: 1.6rem;
+$h5-mobile: 1.4rem;
+$h6-mobile: 1.2rem;
+
 $p-desktop: 1.6rem;
 $p-small-desktop: 1.4rem;
 
@@ -46,9 +60,9 @@ $max-width: 1600px !default;
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 $breakpoints: (
-	'small': 320px,
-	'medium': 768px,
-	'large': 1024px,
+	'phone': 530px,
+	'tablet': 768px,
+	'desktop': 1024px,
 ) !default;
 
 /// Relative or absolute URL where all assets are served from

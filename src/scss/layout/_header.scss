@@ -10,9 +10,22 @@
 	right: 0;
 	z-index: 20;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+	@include media('<phone') {
+		padding: 0 0.8rem;
+	}
 }
 .Header__title {
 	font-size: $h2-desktop;
+	@include media('<tablet') {
+		font-size: $h2-tablet;
+	}
+	@include media('<600px') {
+		font-size: $h2-mobile;
+	}
+	@include media('<phone') {
+		max-width: 60%;
+		font-size: $h3-mobile;
+	}
 }
 .Header__logout {
 	color: $text-dark-gray;
@@ -20,5 +33,10 @@
 	@include text-trans;
 	&:hover {
 		color: $white;
+	}
+}
+.Header__members {
+	@include media('<phone') {
+		display: none;
 	}
 }

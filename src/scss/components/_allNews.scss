@@ -1,9 +1,17 @@
 .AllNews {
-	max-width: 35vw;
-	min-width: 35vw;
+	width: 35vw;
 	margin: 0 auto;
-	margin-bottom: 8rem;
-	margin-top: 24rem;
+	margin-bottom: 10rem;
+	margin-top: 16rem;
+	@include media('<desktop') {
+		width: 50vw;
+	}
+	@include media('<tablet') {
+		margin-top: 8rem;
+	}
+	@include media('<phone') {
+		width: 70vw;
+	}
 }
 
 .AllNews__noNewsMessage {

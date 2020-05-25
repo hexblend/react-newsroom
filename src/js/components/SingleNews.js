@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useFirestore, useFirestoreConnect } from 'react-redux-firebase';
 import { useSelector } from 'react-redux';
@@ -59,6 +59,27 @@ function SingleNews(props) {
 			.set({ author: news.author, date: news.date, news: news.news });
 		firestore.collection('pinned').doc(news.id).delete();
 	};
+
+	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			const pinPost = document.querySelector('.SinglePinnedNews');
+			const allNews = document.querySelector('.AllNews');
+			if (pinPost && allNews) {
+				const pinRect = pinPost.getBoundingClientRect();
+				const newsRect = allNews.getBoundingClientRect();
+				const pinBot = pinRect.bottom;
+				const newsTop = newsRect.top;
+				const dif = newsTop - pinBot;
+				const opacity = (dif * 2) / 100;
+				if (opacity <= 1) {
+					pinPost.style.animation = 'none';
+					pinPost.style.opacity = opacity;
+				} else {
+					pinPost.style.animation = '0.6s ease-in-out fadeIn forwards';
+				}
+			}
+		});
+	}, []);
 
 	return (
 		<div className={`SingleNews ${pinned && 'SinglePinnedNews'}`}>
