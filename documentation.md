@@ -29,6 +29,8 @@
 
 ## Introduction
 
+The aim of this Documentation is to showcase the full proccess of building a Minimal Viable Product as a Full-Stack Web Application that will help students with solving their time-management problem. The proccess will cover everything from asking users opinions and get ideas up to making high fidelity designs and developing a fully-fledged funcitonal application.
+
 ## Project overview
 
 _Solent news_ is a full-stack web application made with the intent of helping students to get real time updates when an unplanned announcement is made. This is helpful in a case where students need a faster way than emailing to find out the current news or if for example they need to undertake their studies from home, and a fast way of communication news is required.
@@ -72,10 +74,112 @@ The **ideating** phase will actually consist of the designing high-fidelity prot
 
 ## Implementation
 
-## Testing
+The implementation stage consists of 2 stages:
 
-## Results
+1. implementing the ideas into a design
+2. implementing the design into a fully working application
+
+### Design implementation
+
+Based on the decisions made in the **Defining** phase, a list of **features** is made before starting to design the app:
+
+1. It is a real-time news app where students can organise their schedule better because they see everything as it is announced.
+2. It should have the minimum amount of pages and the user journey should be as little as possible
+3. In case a something extremely important needs to be announced, the posts should have a pinning feature
+4. Show a list of memebers so that the University staff can keep track of who is in the News Room
+
+In order to integrate everything into a modern high-fidelity prototype, Figma software is used as follows:
+
+#### Login page
+
+![](/docs_pics/login.png)
+
+#### News page[members]
+
+![](/docs_pics/members.png)
+
+#### News page[Create a post]
+
+![](/docs_pics/new-post.png)
+
+#### News page[Single post (Delete / Pin / Unpin)]
+
+![](/docs_pics/post.png)
+
+#### News page[Notification]
+
+![](/docs_pics/notification.png)
+
+#### News page[Overall]
+
+![](/docs_pics/news.png)
+
+### Development implementation
+
+Development phase is probabily the most important and the one that takes the most time in the project, so choosing the right technologies right from the beginning is a must.
+
+Since the project needs to have data in real time, **Firebase** will be used as database system. Firebase is a NO-SQL database service made by Google that shares data with a front-end service i.e. the one it needs to be built. Also, Firebase itself as a database represents just a JSON type file, which is fine for a small size application. But this one will scale to possibly thousands of students, so Cloud Firestore comes in handy as a no-sql traditional database (with collections and documents) [Ref.](https://firebase.googleblog.com/2017/10/cloud-firestore-for-rtdb-developers.html)
+
+To build the front end of this application, a front-end javascript framework called React is used, which, compared to a traditional website will load all the data at first and then the user will undertake actions on the platform without any loading time, making every interraction very efficient.
+
+One of the main react's features is the possibility of creating custom components and using them throuout the whole application. However, in order for them to be dynamic, every component extracts their data from a variable called State. The state can also be passed from one component to another, however in a larger sized application this proccess can be tidious, and so the solution is to have a **Global State**. For this, Redux node package comes in handy. Using redux we can have a global variable that lives throughout the whole application and then whenever the data inside the variable is needed by a component, it can be extracted with ease.
+
+This 3 main technologies are amazing on their own, but to make the development phase a bit easier, a package called [react-redux-firebase](http://react-redux-firebase.com/) is going to be used to connect all above technologies and transform the database data into a Global State.
+
+#### The logic
+
+Once the Firebase project is created, the Google Authentication method needs to be activated as well as the Firestore Database and Hosting. From there, a boilerplate [react-app](https://github.com/facebook/create-react-app) is going to be created and a .env file for storing the credentials from firestore.
+
+Once all the technologies are connected (React, Redux and Firebase), the authentication logic can be made. On the main component a check for the Auth is made so that if an unknown user wants to go to the news page, he will be redirected back to login page.
+
+Then all the logic for getting the news from the database should be created and getting them from the Global State. Same for creating a new post or deleteing a post. The proccess is similar on all of 3 actions.
+
+For pinning a post, a new collection is made holding always just a single post, the pinned one. Once a post is pinned, it will be deleted from the posts collection and added to the pinnedPost collection. Vice-vers happens for un-pinning a post.
+
+Logging a user out is actually done by having a simple /logout route which will hold the logging out logic.
+
+The process of getting all the members to the page is similar to getting all the posts to the page, from Global State, which gets it from the Database.
+
+In the end, the working product, looks exactly as planned and designed.
+
+![](/docs_pics/preview.png)
+
+## Testing & Results
+
+Once the app was completed, a small sourvey was undertaken by the same students that gave the first oppinions in regard to the project idea.
+
+They were asked if:
+
+1. Is the results satisfactory in comparison to the expectansions?
+2. Do you think it will be useful to be used inside of the university?
+3. Any futures you would like the app to have?
+
+The **Results** came with a positive outcome and good feedback.
+The first question was answered 100% positively by everyone.
+
+Second question, was answered positiviely with a few mentions:
+
+- only if each group inside of university would have a different room (ex: Computing Room)
+- yes, if the university stuff is the only one who can post, rather than everyone
+
+Third question came with even more feedback:
+
+- Different rooms, based on the majour, as mentioned
+- Formatted news (with paragraphs and headings)
+- Staff should be seen differently than the students
+- Let only staff to post
 
 ## Recommendations
 
+Based on the feedback got in the previous section a list of recommendations can be made as future updates for the app:
+
+1. Have 2 user-types: staff & students
+2. Let only the staff post
+3. Formatted News
+4. Edit the news
+5. Make a staff user to have something different from a student user
+6. Different news rooms based on student groups.
+
 ## Conclusions
+
+Overall, the application was a learning experience. The development phase was a challange, but having it built on top of a strong infrastrucutre whilst still being small, will help a lot with the future updates. It was also a learning experience in terms of researching. It is now understood that the more users are going to be using the application the more individual needs they have and so the requirements for a Minimal Viable Product can be a lot more in depth than anticipated.
